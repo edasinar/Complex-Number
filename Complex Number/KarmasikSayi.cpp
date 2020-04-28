@@ -8,6 +8,7 @@ KarmasikSayi::KarmasikSayi(int real, int imag)
 
 KarmasikSayi::KarmasikSayi(KarmasikSayi& comp_num)
 {
+	std::cout << "copy constructor:" << std::endl;
 	real = comp_num.real;
 	imag = comp_num.imag;
 }

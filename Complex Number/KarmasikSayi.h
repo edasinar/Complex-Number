@@ -12,8 +12,11 @@ public:
 	KarmasikSayi() :real{ 0 }, imag{ 0 } {}
 	KarmasikSayi(int real, int imag);
 
-	KarmasikSayi(KarmasikSayi&);
-	KarmasikSayi(KarmasikSayi&& comp_num) noexcept: real(std::move(comp_num.real)), imag(std::move(comp_num.imag)) {}
+	 KarmasikSayi(KarmasikSayi&);
+	 KarmasikSayi(KarmasikSayi&& comp_num) noexcept: real(std::move(comp_num.real)), imag(std::move(comp_num.imag)) 
+	{
+		std::cout << "Move constructor:" << std::endl;
+	}
 
 	KarmasikSayi operator+(KarmasikSayi&);
 	KarmasikSayi operator-(KarmasikSayi&);
