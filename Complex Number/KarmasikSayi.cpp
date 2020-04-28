@@ -12,13 +12,6 @@ KarmasikSayi::KarmasikSayi(KarmasikSayi& comp_num)
 	imag = comp_num.imag;
 }
 
-KarmasikSayi::KarmasikSayi(KarmasikSayi&& comp_num)
-{
-	real = comp_num.real;
-	imag = comp_num.imag;
-
-}
-
 KarmasikSayi KarmasikSayi::operator+(KarmasikSayi& comp_num)
 {
 	KarmasikSayi temp;
@@ -58,11 +51,12 @@ KarmasikSayi KarmasikSayi::operator/(KarmasikSayi& comp_num)
 	}
 	if (comp_num.real == 0 && comp_num.imag == 0)
 	{
-		throw std::invalid_argument("this division is invalid!");
+		std::cout << "invalid division";
+		exit(-1);
 	}
 
-	temp.real = ((real * comp_num.real) + (imag * comp_num.imag)) / ((comp_num.real * comp_num.real) + (comp_num.imag * comp_num.imag));
-	temp.imag = ((imag * comp_num.real) - (real * comp_num.imag)) / ((comp_num.real * comp_num.real) + (comp_num.imag * comp_num.imag));
+	temp.real = (double)(((real * comp_num.real) + (imag * comp_num.imag)) / ((comp_num.real * comp_num.real) + (comp_num.imag * comp_num.imag)));
+	temp.imag = (double)(((imag * comp_num.real) - (real * comp_num.imag)) / ((comp_num.real * comp_num.real) + (comp_num.imag * comp_num.imag)));
 
 	return temp;
 }
@@ -77,7 +71,7 @@ bool KarmasikSayi::operator==(KarmasikSayi& comp_num)
 
 std::ostream& operator<<(std::ostream& out, const KarmasikSayi& comp_num)
 {
-	out << comp_num.real << "+ (" << comp_num.imag << "i)" << std::endl;
+	out << comp_num.real << "+(" << comp_num.imag << "i)" << std::endl;
 
 	return out;
 }

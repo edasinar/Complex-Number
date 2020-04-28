@@ -1,6 +1,8 @@
 #pragma once
 
 #include <iostream>
+#include <exception>
+#include <stdexcept>
 
 class KarmasikSayi
 {
@@ -11,7 +13,7 @@ public:
 	KarmasikSayi(int real, int imag);
 
 	KarmasikSayi(KarmasikSayi&);
-	KarmasikSayi(KarmasikSayi&&);
+	KarmasikSayi(KarmasikSayi&& comp_num) noexcept: real(std::move(comp_num.real)), imag(std::move(comp_num.imag)) {}
 
 	KarmasikSayi operator+(KarmasikSayi&);
 	KarmasikSayi operator-(KarmasikSayi&);
@@ -21,6 +23,6 @@ public:
 	bool operator==(KarmasikSayi&);
 
 private:
-	int real; // reel kýsmý tutar.
-	int imag; // karmaþýk kýsmý tutar.
+	double real; // reel kýsmý tutar.
+	double imag; // karmaþýk kýsmý tutar.
 };
